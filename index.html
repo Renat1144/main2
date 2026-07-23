@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Премиальная главная страница проекта. Тексты и изображения будут добавлены на следующих этапах."
+    />
+    <meta name="theme-color" content="#2a074b" />
+    <title>Название проекта — главная</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+
+    <header class="site-header" id="top">
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="На главную">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <span class="brand-name">Название проекта</span>
+            <span class="brand-caption">Основное направление</span>
+          </span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span class="menu-toggle-label">Меню</span>
+          <span class="menu-toggle-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <nav class="primary-nav" id="primary-navigation" aria-label="Основная навигация">
+          <a class="nav-link is-active" href="#top">Главная</a>
+          <a class="nav-link" href="#about">Обо мне</a>
+          <a class="nav-link" href="#masterclasses">Мастер-классы</a>
+          <a class="nav-link" href="#coaching">Коуч-сессия</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-aurora" aria-hidden="true"></div>
+        <div class="shell hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span>01</span> Основное направление</p>
+            <h1 id="hero-title">Основной заголовок проекта</h1>
+            <p class="hero-lead">
+              Краткое описание главного предложения и результата, который получает посетитель.
+              Финальный текст будет добавлен позже.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#masterclasses">
+                Выбрать направление <span aria-hidden="true">↗</span>
+              </a>
+              <a class="text-link" href="#method">Узнать о подходе</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" data-delay="1">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="photo-placeholder photo-placeholder-portrait">
+              <span>ТУТ БУДЕТ ФОТО</span>
+              <small>Главный портрет</small>
+            </div>
+            <div class="hero-note">
+              <span class="hero-note-index">01</span>
+              <p>Ключевой образ проекта</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="shell hero-footer" aria-hidden="true">
+          <span>Внутренняя опора</span>
+          <span class="hero-footer-line"></span>
+          <span>Новый сценарий</span>
+        </div>
+      </section>
+
+      <section class="manifesto section-pad" aria-labelledby="manifesto-title">
+        <div class="shell manifesto-grid">
+          <p class="section-kicker reveal">Идея проекта</p>
+          <div class="manifesto-copy reveal" data-delay="1">
+            <h2 id="manifesto-title">
+              Текст о ценностях, подходе и возможности создавать изменения
+              <em>осознанно</em>
+            </h2>
+            <p>
+              Здесь появится подтверждающий абзац или короткая история. Сейчас блок сохраняет
+              композицию и примерную длину будущего текста.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-strip reveal" aria-label="Будущая фотогалерея">
+          <div class="photo-placeholder gallery-photo gallery-photo-wide">
+            <span>ТУТ БУДЕТ ФОТО</span>
+          </div>
+          <div class="photo-placeholder gallery-photo">
+            <span>ТУТ БУДЕТ ФОТО</span>
+          </div>
+          <div class="photo-placeholder gallery-photo gallery-photo-tall">
+            <span>ТУТ БУДЕТ ФОТО</span>
+          </div>
+          <div class="photo-placeholder gallery-photo">
+            <span>ТУТ БУДЕТ ФОТО</span>
+          </div>
+          <div class="photo-placeholder gallery-photo gallery-photo-wide">
+            <span>ТУТ БУДЕТ ФОТО</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section-pad" id="about" aria-labelledby="about-title">
+        <div class="shell about-grid">
+          <div class="about-visual reveal">
+            <div class="photo-frame">
+              <div class="photo-placeholder photo-placeholder-about">
+                <span>ТУТ БУДЕТ ФОТО</span>
+                <small>Портрет специалиста</small>
+              </div>
+            </div>
+            <p class="vertical-label" aria-hidden="true">Профессиональный путь</p>
+          </div>
+
+          <div class="about-copy reveal" data-delay="1">
+            <p class="section-kicker">Знакомство</p>
+            <h2 id="about-title">О специалисте</h2>
+            <p class="about-name">Имя специалиста</p>
+            <p class="about-role">
+              Краткое описание профессионального направления и основной специализации.
+            </p>
+
+            <div class="credentials" role="list">
+              <article class="credential" role="listitem">
+                <span class="credential-mark" aria-hidden="true">✦</span>
+                <div>
+                  <h3>Образование</h3>
+                  <p>Информация об основном и дополнительном образовании будет добавлена позже.</p>
+                </div>
+              </article>
+              <article class="credential" role="listitem">
+                <span class="credential-mark" aria-hidden="true">✦</span>
+                <div>
+                  <h3>Практика</h3>
+                  <p>Описание опыта работы, профессиональных проектов и форматов практики.</p>
+                </div>
+              </article>
+              <article class="credential" role="listitem">
+                <span class="credential-mark" aria-hidden="true">✦</span>
+                <div>
+                  <h3>Авторский подход</h3>
+                  <p>Краткое описание методики и принципов работы будет размещено здесь.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="expertise section-pad" aria-labelledby="expertise-title">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-kicker">Компетенции</p>
+              <h2 id="expertise-title">Основные направления работы</h2>
+            </div>
+            <p class="section-intro">
+              Содержимое карточек будет заменено после утверждения финальных текстов.
+            </p>
+          </div>
+
+          <div class="expertise-grid">
+            <article class="expertise-card reveal">
+              <span class="card-index">01</span>
+              <h3>Название направления</h3>
+              <p>Краткое описание направления, его задач и формата работы.</p>
+            </article>
+            <article class="expertise-card reveal" data-delay="1">
+              <span class="card-index">02</span>
+              <h3>Название направления</h3>
+              <p>Краткое описание направления, его задач и формата работы.</p>
+            </article>
+            <article class="expertise-card reveal" data-delay="2">
+              <span class="card-index">03</span>
+              <h3>Название направления</h3>
+              <p>Краткое описание направления, его задач и формата работы.</p>
+            </article>
+            <article class="expertise-card expertise-card-featured reveal">
+              <span class="card-index">04</span>
+              <h3>Опыт и профессиональная практика</h3>
+              <p>
+                Здесь будет размещён расширенный текст об опыте, проектах и результатах работы.
+              </p>
+            </article>
+            <article class="expertise-card reveal" data-delay="1">
+              <span class="card-index">05</span>
+              <h3>Практический подход</h3>
+              <p>Описание принципов построения программ и индивидуальной работы.</p>
+            </article>
+            <article class="expertise-card reveal" data-delay="2">
+              <span class="card-index">06</span>
+              <h3>Постоянное развитие</h3>
+              <p>Информация о дополнительном обучении и профессиональном развитии.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="editorial section-pad" aria-labelledby="editorial-title">
+        <div class="shell">
+          <div class="editorial-title reveal">
+            <span>Авторский</span>
+            <h2 id="editorial-title">проект</h2>
+          </div>
+
+          <article class="book-card reveal">
+            <div class="book-copy">
+              <p class="eyebrow eyebrow-light"><span>02</span> Авторское издание</p>
+              <h3>Название книги</h3>
+              <p>
+                Описание книги, её идеи и пользы для читателя будет добавлено после подготовки
+                контента.
+              </p>
+              <div class="button-row">
+                <button class="button button-gold" type="button" data-placeholder-action>
+                  Подробнее <span aria-hidden="true">↗</span>
+                </button>
+                <button class="button button-outline-light" type="button" data-placeholder-action>
+                  Электронная версия
+                </button>
+              </div>
+            </div>
+            <div class="book-visual" aria-label="Место для изображения книги">
+              <div class="photo-placeholder book-cover book-cover-back">
+                <span>ТУТ БУДЕТ ФОТО</span>
+              </div>
+              <div class="photo-placeholder book-cover book-cover-front">
+                <span>ТУТ БУДЕТ ФОТО</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="recognition-card reveal">
+            <span class="recognition-star" aria-hidden="true">✦</span>
+            <div>
+              <p>Профессиональное признание</p>
+              <h3>Название премии или достижения</h3>
+            </div>
+            <button class="round-link" type="button" data-placeholder-action aria-label="Подробнее">
+              ↗
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="method-intro section-pad" id="method" aria-labelledby="method-intro-title">
+        <div class="shell method-intro-grid">
+          <div class="reveal">
+            <p class="section-kicker">Видео о подходе</p>
+            <h2 id="method-intro-title">Что представляет собой метод?</h2>
+            <p>
+              Здесь будет размещено вводное видео. До получения материала используется
+              нейтральная заглушка нужного формата.
+            </p>
+          </div>
+          <button
+            class="video-placeholder reveal"
+            type="button"
+            data-placeholder-action
+            aria-label="Видео будет добавлено позже"
+          >
+            <span class="video-play" aria-hidden="true">▶</span>
+            <span>ТУТ БУДЕТ ФОТО</span>
+            <small>Обложка будущего видео</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="method section-pad" aria-labelledby="method-title">
+        <div class="method-glow" aria-hidden="true"></div>
+        <div class="shell method-grid">
+          <div class="method-copy reveal">
+            <p class="section-kicker section-kicker-gold">Метод</p>
+            <h2 id="method-title">Структура психологической работы</h2>
+            <p class="method-lead">
+              Нейтральное описание принципа работы. Финальная формулировка появится после
+              предоставления текста.
+            </p>
+
+            <ol class="method-steps">
+              <li>
+                <span>01</span>
+                <div>
+                  <h3>Определение запроса</h3>
+                  <p>Осознание текущей ситуации и формулирование направления работы.</p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h3>Формирование нового сценария</h3>
+                  <p>Работа с внутренними установками и доступными способами изменений.</p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h3>Закрепление результата</h3>
+                  <p>Перенос новых стратегий в повседневную жизнь и практику.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="method-visual reveal" data-delay="1">
+            <div class="method-ring" aria-hidden="true"></div>
+            <div class="photo-placeholder photo-placeholder-method">
+              <span>ТУТ БУДЕТ ФОТО</span>
+              <small>Тематическое изображение</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="masterclasses section-pad" id="masterclasses" aria-labelledby="masterclasses-title">
+        <div class="shell">
+          <div class="section-heading reveal">
+            <div>
+              <p class="section-kicker">Материалы</p>
+              <h2 id="masterclasses-title">Мастер-классы</h2>
+            </div>
+            <p class="section-intro">
+              Карточки подготовлены как заглушки. Отдельные страницы мастер-классов появятся
+              позже.
+            </p>
+          </div>
+
+          <div class="masterclass-grid">
+            <article class="masterclass-card reveal">
+              <div class="photo-placeholder masterclass-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+              </div>
+              <div class="masterclass-content">
+                <p class="card-label">Мастер-класс 01</p>
+                <h3>Название мастер-класса</h3>
+                <p>Краткое описание темы и результата будет добавлено позже.</p>
+                <button class="card-link" type="button" data-placeholder-action>
+                  Скоро <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </article>
+            <article class="masterclass-card reveal" data-delay="1">
+              <div class="photo-placeholder masterclass-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+              </div>
+              <div class="masterclass-content">
+                <p class="card-label">Мастер-класс 02</p>
+                <h3>Название мастер-класса</h3>
+                <p>Краткое описание темы и результата будет добавлено позже.</p>
+                <button class="card-link" type="button" data-placeholder-action>
+                  Скоро <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </article>
+            <article class="masterclass-card reveal" data-delay="2">
+              <div class="photo-placeholder masterclass-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+              </div>
+              <div class="masterclass-content">
+                <p class="card-label">Мастер-класс 03</p>
+                <h3>Название мастер-класса</h3>
+                <p>Краткое описание темы и результата будет добавлено позже.</p>
+                <button class="card-link" type="button" data-placeholder-action>
+                  Скоро <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="stories section-pad" aria-labelledby="stories-title">
+        <div class="shell">
+          <div class="stories-heading reveal">
+            <p class="section-kicker">Истории</p>
+            <h2 id="stories-title">Результаты участниц</h2>
+            <p>Фотографии, имена и тексты историй будут добавлены после подготовки материалов.</p>
+          </div>
+
+          <div class="stories-grid">
+            <article class="story-card reveal">
+              <div class="photo-placeholder story-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+                <span class="story-play" aria-hidden="true">▶</span>
+              </div>
+              <div class="story-copy">
+                <p class="card-label">История участницы</p>
+                <h3>Имя участницы</h3>
+                <p>Описание исходной ситуации и результата будет размещено здесь.</p>
+              </div>
+            </article>
+            <article class="story-card reveal" data-delay="1">
+              <div class="photo-placeholder story-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+                <span class="story-play" aria-hidden="true">▶</span>
+              </div>
+              <div class="story-copy">
+                <p class="card-label">История участницы</p>
+                <h3>Имя участницы</h3>
+                <p>Описание исходной ситуации и результата будет размещено здесь.</p>
+              </div>
+            </article>
+            <article class="story-card story-card-wide reveal">
+              <div class="photo-placeholder story-photo">
+                <span>ТУТ БУДЕТ ФОТО</span>
+                <span class="story-play" aria-hidden="true">▶</span>
+              </div>
+              <div class="story-copy">
+                <p class="card-label">История участницы</p>
+                <h3>Имя участницы</h3>
+                <p>Описание исходной ситуации и результата будет размещено здесь.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="coaching section-pad" id="coaching" aria-labelledby="coaching-title">
+        <div class="shell coaching-card reveal">
+          <div class="coaching-orbit" aria-hidden="true"></div>
+          <div class="coaching-copy">
+            <p class="eyebrow eyebrow-light"><span>03</span> Индивидуальный формат</p>
+            <h2 id="coaching-title">Коуч-сессия</h2>
+            <p>
+              Описание формата индивидуальной работы, условий и доступных вариантов будет
+              добавлено позже.
+            </p>
+            <button class="button button-gold" type="button" data-placeholder-action>
+              Оставить заявку <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="photo-placeholder coaching-photo">
+            <span>ТУТ БУДЕТ ФОТО</span>
+            <small>Фотография для секции</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand brand-footer" href="#top">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="brand-copy">
+              <span class="brand-name">Название проекта</span>
+              <span class="brand-caption">Основное направление</span>
+            </span>
+          </a>
+          <p>Краткое описание проекта и его основного направления.</p>
+        </div>
+
+        <div class="footer-column">
+          <h2>Навигация</h2>
+          <a href="#about">Обо мне</a>
+          <a href="#masterclasses">Мастер-классы</a>
+          <a href="#method">О методе</a>
+          <a href="#coaching">Коуч-сессия</a>
+        </div>
+
+        <div class="footer-column">
+          <h2>Документы</h2>
+          <button type="button" data-placeholder-action>Политика конфиденциальности</button>
+          <button type="button" data-placeholder-action>Пользовательское соглашение</button>
+          <button type="button" data-placeholder-action>Согласие на обработку данных</button>
+        </div>
+
+        <div class="footer-column footer-contact">
+          <h2>Контакты</h2>
+          <p>Контактные данные будут добавлены позже.</p>
+          <button class="footer-contact-link" type="button" data-placeholder-action>
+            Адрес электронной почты ↗
+          </button>
+        </div>
+      </div>
+
+      <div class="shell footer-bottom">
+        <p>© <span id="current-year"></span> Название проекта</p>
+        <p>Реквизиты и сведения об организации будут добавлены позже.</p>
+        <a href="#top">Наверх ↑</a>
+      </div>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true">
+      Ссылка будет добавлена позже
+    </div>
+  </body>
+</html>
