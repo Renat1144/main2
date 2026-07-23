@@ -24,6 +24,7 @@
   --font-utility: Inter, "Helvetica Neue", Arial, sans-serif;
 
   --shell: 1180px;
+  --header-height: 84px;
   --section-space: clamp(5rem, 8vw, 8.5rem);
   --radius-small: 14px;
   --radius-medium: 24px;
@@ -39,7 +40,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+  scroll-padding-top: calc(var(--header-height) + 24px);
 }
 
 body {
@@ -129,18 +130,20 @@ a {
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
   z-index: 100;
+  top: 0;
   color: var(--white);
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 32px 32px,
     linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 36%),
     var(--violet-950);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 34px rgba(14, 2, 23, 0.16);
 }
 
 .header-inner {
-  min-height: 84px;
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -283,7 +286,7 @@ a {
 
 .hero {
   position: relative;
-  min-height: calc(100svh - 84px);
+  min-height: calc(100svh - var(--header-height));
   padding-block: clamp(4rem, 7vw, 7.25rem) 2rem;
   overflow: hidden;
   color: var(--white);
@@ -1667,15 +1670,12 @@ a {
 
 @media (max-width: 900px) {
   :root {
+    --header-height: 76px;
     --section-space: 6.2rem;
   }
 
   .shell {
     width: min(100% - 48px, var(--shell));
-  }
-
-  .header-inner {
-    min-height: 76px;
   }
 
   .brand-caption {
@@ -1819,16 +1819,12 @@ a {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --header-height: 72px;
+  }
+
   .shell {
     width: min(100% - 36px, var(--shell));
-  }
-
-  .site-header {
-    position: relative;
-  }
-
-  .header-inner {
-    min-height: 72px;
   }
 
   .menu-toggle {
@@ -1838,8 +1834,8 @@ a {
   .primary-nav {
     position: fixed;
     z-index: 90;
-    inset: 72px 0 auto;
-    min-height: calc(100svh - 72px);
+    inset: var(--header-height) 0 auto;
+    min-height: calc(100svh - var(--header-height));
     display: flex;
     align-items: stretch;
     flex-direction: column;
