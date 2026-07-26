@@ -1,0 +1,12 @@
+.wp-block-project-blocks-master-offer .master-offer-item-text {
+  color: var(--muted);
+}
+
+.wp-block-project-blocks-master-offer .master-offer-item-text > :last-child {
+  margin-bottom: 0;
+}
+
+.wp-block-project-blocks-master-offer a.master-pay-button {
+  text-decoration: none;
+}
+

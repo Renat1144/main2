@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "project-blocks/master-video",
+  "version": "1.0.0",
+  "title": "Видео мастер-класса",
+  "category": "project-blocks",
+  "icon": "video-alt3",
+  "description": "Секция видеоматериала с редактируемой подписью.",
+  "textdomain": "project-blocks",
+  "attributes": {
+    "kicker": { "type": "string", "default": "Материал" },
+    "title": { "type": "string", "default": "Видео мастер-класса" },
+    "placeholderTitle": { "type": "string", "default": "ТУТ БУДЕТ ВИДЕО" },
+    "placeholderText": { "type": "string", "default": "Видеоматериал будет добавлен позже" },
+    "typography": { "type": "object", "default": {} }
+  },
+  "supports": {
+    "html": false,
+    "multiple": false,
+    "reusable": false,
+    "color": false,
+    "spacing": false,
+    "typography": false
+  },
+  "editorScript": "project-blocks-editor",
+  "style": "file:./style.css",
+  "editorStyle": ["project-blocks-editor-foundations", "file:./editor.css"],
+  "render": "file:./render.php"
+}

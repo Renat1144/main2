@@ -1,0 +1,9 @@
+.wp-block-project-blocks-master-offer [contenteditable="true"]:focus {
+  outline: 2px solid rgba(91, 36, 136, 0.34);
+  outline-offset: 5px;
+}
+
+.wp-block-project-blocks-master-offer .master-pay-button {
+  pointer-events: none;
+}
+

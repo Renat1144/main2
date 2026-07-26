@@ -1,0 +1,22 @@
+{
+  "apiVersion": 3,
+  "name": "project-blocks/home-expertise",
+  "version": "1.0.0",
+  "title": "Главная — направления работы",
+  "category": "project-blocks",
+  "icon": "grid-view",
+  "description": "Шесть карточек направлений работы.",
+  "textdomain": "project-blocks",
+  "attributes": {
+    "kicker": { "type": "string", "default": "" },
+    "title": { "type": "string", "default": "" },
+    "intro": { "type": "string", "default": "" },
+    "cards": { "type": "array", "default": [{},{},{},{},{},{}] },
+    "typography": { "type": "object", "default": {} }
+  },
+  "supports": { "html": false, "align": false, "multiple": false, "reusable": false, "color": false, "spacing": false, "typography": false },
+  "editorScript": "project-blocks-editor",
+  "style": "project-blocks-home",
+  "editorStyle": ["project-blocks-editor-site", "project-blocks-editor-foundations"],
+  "render": "file:./render.php"
+}

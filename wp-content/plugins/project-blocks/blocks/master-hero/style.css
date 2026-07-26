@@ -1,0 +1,40 @@
+.wp-block-project-blocks-master-hero .master-detail-description {
+  max-width: 590px;
+  margin: -10px 0 28px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.wp-block-project-blocks-master-hero .master-detail-description > :last-child,
+.wp-block-project-blocks-master-hero .project-blocks-card-content > :last-child {
+  margin-bottom: 0;
+}
+
+.wp-block-project-blocks-master-hero .project-blocks-card-content {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.wp-block-project-blocks-master-hero .master-detail-hero-actions {
+  display: flex;
+  margin-top: 26px;
+}
+
+.wp-block-project-blocks-master-hero figure.master-detail-photo {
+  position: relative;
+  margin: 0;
+}
+
+.wp-block-project-blocks-master-hero .project-blocks-image-caption {
+  position: absolute;
+  right: 22px;
+  bottom: 18px;
+  left: 22px;
+  padding: 9px 14px;
+  color: var(--violet-950);
+  background: rgba(255, 250, 241, 0.88);
+  border-radius: 999px;
+  font-family: var(--font-utility);
+  font-size: 11px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+

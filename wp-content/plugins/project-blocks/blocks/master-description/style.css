@@ -1,0 +1,8 @@
+.wp-block-project-blocks-master-description .master-editor-content {
+  color: var(--ink);
+}
+
+.wp-block-project-blocks-master-description .master-editor-content > :last-child {
+  margin-bottom: 0;
+}
+

@@ -1,0 +1,27 @@
+{
+  "apiVersion": 3,
+  "name": "project-blocks/home-about",
+  "version": "1.0.0",
+  "title": "Главная — обо мне",
+  "category": "project-blocks",
+  "icon": "id-alt",
+  "description": "Раздел «Обо мне» с фотографией и фактами.",
+  "textdomain": "project-blocks",
+  "attributes": {
+    "kicker": { "type": "string", "default": "Обо мне" },
+    "title": { "type": "string", "default": "" },
+    "name": { "type": "string", "default": "" },
+    "role": { "type": "string", "default": "" },
+    "verticalLabel": { "type": "string", "default": "" },
+    "credentials": { "type": "array", "default": [{},{},{}] },
+    "imageId": { "type": "number", "default": 0 },
+    "imageUrl": { "type": "string", "default": "" },
+    "imageAlt": { "type": "string", "default": "Портрет специалиста" },
+    "typography": { "type": "object", "default": {} }
+  },
+  "supports": { "html": false, "align": false, "multiple": false, "reusable": false, "color": false, "spacing": false, "typography": false },
+  "editorScript": "project-blocks-editor",
+  "style": "project-blocks-home",
+  "editorStyle": ["project-blocks-editor-site", "project-blocks-editor-foundations"],
+  "render": "file:./render.php"
+}

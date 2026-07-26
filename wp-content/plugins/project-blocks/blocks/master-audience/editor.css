@@ -1,0 +1,9 @@
+.wp-block-project-blocks-master-audience [contenteditable="true"]:focus {
+  outline: 2px solid rgba(224, 187, 118, 0.8);
+  outline-offset: 5px;
+}
+
+.wp-block-project-blocks-master-audience .master-audience-text {
+  min-height: 32px;
+}
+

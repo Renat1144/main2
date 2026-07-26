@@ -1,0 +1,23 @@
+{
+  "apiVersion": 3,
+  "name": "project-blocks/home-manifesto",
+  "version": "1.0.0",
+  "title": "Главная — манифест",
+  "category": "project-blocks",
+  "icon": "format-quote",
+  "description": "Манифест и фотогалерея.",
+  "textdomain": "project-blocks",
+  "attributes": {
+    "kicker": { "type": "string", "default": "" },
+    "title": { "type": "string", "default": "" },
+    "emphasis": { "type": "string", "default": "" },
+    "body": { "type": "string", "default": "" },
+    "gallery": { "type": "array", "default": [{},{},{},{},{}] },
+    "typography": { "type": "object", "default": {} }
+  },
+  "supports": { "html": false, "align": false, "multiple": false, "reusable": false, "color": false, "spacing": false, "typography": false },
+  "editorScript": "project-blocks-editor",
+  "style": "project-blocks-home",
+  "editorStyle": ["project-blocks-editor-site", "project-blocks-editor-foundations"],
+  "render": "file:./render.php"
+}

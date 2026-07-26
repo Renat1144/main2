@@ -1,0 +1,25 @@
+.wp-block-project-blocks-master-hero .project-blocks-media-actions {
+  position: absolute;
+  z-index: 5;
+  top: 22px;
+  left: 50%;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.wp-block-project-blocks-master-hero .project-blocks-media-actions .components-button {
+  color: #2a074b;
+  background: #fffaf1;
+  box-shadow: 0 8px 24px rgba(22, 3, 34, 0.2);
+}
+
+.wp-block-project-blocks-master-hero [contenteditable="true"]:focus {
+  outline: 2px solid rgba(224, 187, 118, 0.8);
+  outline-offset: 4px;
+}
+
+.wp-block-project-blocks-master-hero .project-blocks-inline-label {
+  min-width: 90px;
+}
+

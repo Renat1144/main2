@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "780px",
+      "wideSize": "1180px"
+    },
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "palette": [
+        { "slug": "violet-950", "name": "Глубокий фиолетовый", "color": "#160322" },
+        { "slug": "violet-900", "name": "Фиолетовый", "color": "#2a074b" },
+        { "slug": "violet-800", "name": "Светлый фиолетовый", "color": "#451779" },
+        { "slug": "gold-700", "name": "Тёмное золото", "color": "#a66e42" },
+        { "slug": "gold-400", "name": "Золото", "color": "#e0bb76" },
+        { "slug": "gold-200", "name": "Светлое золото", "color": "#f1ddb4" },
+        { "slug": "ivory-100", "name": "Слоновая кость", "color": "#fffaf1" },
+        { "slug": "ivory-200", "name": "Тёплый фон", "color": "#f7ecdd" },
+        { "slug": "ink", "name": "Основной текст", "color": "#231928" },
+        { "slug": "white", "name": "Белый", "color": "#ffffff" }
+      ]
+    },
+    "typography": {
+      "customFontSize": true,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "slug": "display",
+          "name": "Акцентный",
+          "fontFamily": "\"Bodoni 72\", Didot, \"Times New Roman\", serif"
+        },
+        {
+          "slug": "body",
+          "name": "Основной",
+          "fontFamily": "\"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif"
+        },
+        {
+          "slug": "utility",
+          "name": "Служебный",
+          "fontFamily": "Inter, \"Helvetica Neue\", Arial, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Маленький", "size": "12px" },
+        { "slug": "normal", "name": "Основной", "size": "17px" },
+        { "slug": "lead", "name": "Лид", "size": "20px" },
+        { "slug": "heading", "name": "Заголовок", "size": "48px" }
+      ]
+    },
+    "spacing": {
+      "customSpacingSize": false,
+      "spacingSizes": [
+        { "slug": "20", "name": "XS", "size": "8px" },
+        { "slug": "30", "name": "S", "size": "16px" },
+        { "slug": "40", "name": "M", "size": "24px" },
+        { "slug": "50", "name": "L", "size": "40px" },
+        { "slug": "60", "name": "XL", "size": "64px" }
+      ],
+      "units": ["px", "rem", "%"]
+    }
+  }
+}

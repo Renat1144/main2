@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "name": "project-blocks/home-method",
+  "version": "1.0.0",
+  "title": "Главная — метод",
+  "category": "project-blocks",
+  "icon": "list-view",
+  "description": "Описание метода, этапы и фотография.",
+  "textdomain": "project-blocks",
+  "attributes": {
+    "kicker": { "type": "string", "default": "Метод" },
+    "title": { "type": "string", "default": "" },
+    "lead": { "type": "string", "default": "" },
+    "steps": { "type": "array", "default": [{},{},{}] },
+    "imageId": { "type": "number", "default": 0 },
+    "imageUrl": { "type": "string", "default": "" },
+    "imageAlt": { "type": "string", "default": "Портрет специалиста" },
+    "typography": { "type": "object", "default": {} }
+  },
+  "supports": { "html": false, "align": false, "multiple": false, "reusable": false, "color": false, "spacing": false, "typography": false },
+  "editorScript": "project-blocks-editor",
+  "style": "project-blocks-home",
+  "editorStyle": ["project-blocks-editor-site", "project-blocks-editor-foundations"],
+  "render": "file:./render.php"
+}

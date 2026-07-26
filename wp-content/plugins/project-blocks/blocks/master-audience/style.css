@@ -1,0 +1,8 @@
+.wp-block-project-blocks-master-audience .master-audience-text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.wp-block-project-blocks-master-audience .master-audience-text > :last-child {
+  margin-bottom: 0;
+}
+
