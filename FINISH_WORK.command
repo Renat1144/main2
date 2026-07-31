@@ -13,7 +13,7 @@ exit_code=$?
 
 echo
 if [[ "$exit_code" -eq 0 ]]; then
-    echo 'Archive created successfully in Google Drive - sites.'
+    echo 'Archive created successfully in Google Drive - Codex Drive.'
     echo 'Wait for Google Drive synchronization before switching devices.'
 else
     echo "Export failed with exit code $exit_code. Review the message above."

@@ -4,7 +4,8 @@ param(
     [switch]$Force,
     [switch]$SkipBackup,
     [switch]$ValidateOnly,
-    [string]$GoogleDriveSitesPath
+    [Alias('GoogleDriveSitesPath')]
+    [string]$CodexDrivePath
 )
 
 $ErrorActionPreference = 'Stop'
@@ -38,49 +39,43 @@ function Invoke-Compose {
     }
 }
 
-function Find-GoogleDriveSitesPath {
+function Find-CodexDrivePath {
     param([string]$ExplicitPath)
 
     if ($ExplicitPath) {
         return [System.IO.Path]::GetFullPath($ExplicitPath)
     }
 
-    $candidates = @(
-        'G:\Мой диск\sites',
-        'G:\My Drive\sites',
-        'G:\sites',
-        'G:\Мой диск\Codex Drive',
-        'G:\My Drive\Codex Drive',
-        'G:\Codex Drive'
-    )
+    $candidates = @()
     if ($env:CODEX_DRIVE_PATH) {
         $candidates += $env:CODEX_DRIVE_PATH
+    }
+    if ($env:SITE_TRANSFER_DIR) {
+        $candidates += $env:SITE_TRANSFER_DIR
     }
     if ($env:GOOGLE_DRIVE_SITES_PATH) {
         $candidates += $env:GOOGLE_DRIVE_SITES_PATH
     }
+    $candidates += @(
+        'G:\Мой диск\Codex Drive',
+        'G:\My Drive\Codex Drive',
+        'G:\Codex Drive'
+    )
 
     $fileSystemDrives = @(Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue)
     foreach ($drive in $fileSystemDrives) {
         $isGoogleDrive = ($drive.Description -like '*Google Drive*') -or ($drive.DisplayRoot -like '*Google Drive*')
         if ($isGoogleDrive -or $drive.Name -eq 'G') {
-            $candidates += (Join-Path $drive.Root 'Мой диск\sites')
-            $candidates += (Join-Path $drive.Root 'My Drive\sites')
-            $candidates += (Join-Path $drive.Root 'sites')
             $candidates += (Join-Path $drive.Root 'Мой диск\Codex Drive')
             $candidates += (Join-Path $drive.Root 'My Drive\Codex Drive')
             $candidates += (Join-Path $drive.Root 'Codex Drive')
             $topLevelFolders = @(Get-ChildItem -LiteralPath $drive.Root -Directory -Force -ErrorAction SilentlyContinue)
             foreach ($topLevelFolder in $topLevelFolders) {
-                $candidates += (Join-Path $topLevelFolder.FullName 'sites')
                 $candidates += (Join-Path $topLevelFolder.FullName 'Codex Drive')
             }
         }
     }
 
-    $candidates += (Join-Path $env:USERPROFILE 'Google Drive\sites')
-    $candidates += (Join-Path $env:USERPROFILE 'My Drive\sites')
-    $candidates += (Join-Path $env:USERPROFILE 'Мой диск\sites')
     $candidates += (Join-Path $env:USERPROFILE 'Google Drive\Codex Drive')
     $candidates += (Join-Path $env:USERPROFILE 'My Drive\Codex Drive')
     $candidates += (Join-Path $env:USERPROFILE 'Мой диск\Codex Drive')
@@ -92,7 +87,7 @@ function Find-GoogleDriveSitesPath {
         }
     }
 
-    throw 'Google Drive transfer folder "sites" was not found. Start Google Drive Desktop or pass -GoogleDriveSitesPath with the local path to that folder.'
+    throw 'Google Drive transfer folder "Codex Drive" was not found. Start Google Drive Desktop or pass -CodexDrivePath with the local path to that folder.'
 }
 
 $projectPath = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -109,17 +104,17 @@ if (-not (Test-Path -LiteralPath $composePath -PathType Leaf)) {
 
 $archiveFromGoogleDrive = -not [bool]$ArchivePath
 if ($archiveFromGoogleDrive) {
-    $sitesPath = Find-GoogleDriveSitesPath -ExplicitPath $GoogleDriveSitesPath
-    if (-not (Test-Path -LiteralPath $sitesPath -PathType Container)) {
-        throw "The Google Drive sites folder was not found: $sitesPath"
+    $codexDriveDirectory = Find-CodexDrivePath -ExplicitPath $CodexDrivePath
+    if (-not (Test-Path -LiteralPath $codexDriveDirectory -PathType Container)) {
+        throw "The Google Drive Codex Drive folder was not found: $codexDriveDirectory"
     }
 
-    $latestArchive = Get-ChildItem -LiteralPath $sitesPath -Filter "$projectFolderName-*.zip" -File -ErrorAction SilentlyContinue |
+    $latestArchive = Get-ChildItem -LiteralPath $codexDriveDirectory -Filter "$projectFolderName-*.zip" -File -ErrorAction SilentlyContinue |
         Where-Object { $_.Name -notmatch '-before-import-' } |
         Sort-Object LastWriteTimeUtc -Descending |
         Select-Object -First 1
     if (-not $latestArchive) {
-        throw "No $projectFolderName transfer ZIP was found in Google Drive: $sitesPath"
+        throw "No $projectFolderName transfer ZIP was found in Google Drive: $codexDriveDirectory"
     }
 
     $incomingPath = Join-Path $backupsPath 'incoming'

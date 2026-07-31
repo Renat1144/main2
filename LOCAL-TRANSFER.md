@@ -12,11 +12,11 @@
 
 ## Где находятся архивы
 
-Экспорт сохраняет ZIP прямо в папку `sites` на Google Drive, без вложенных
+Экспорт сохраняет ZIP прямо в папку `Codex Drive` на Google Drive, без вложенных
 папок. На этом Windows-компьютере это:
 
 ```text
-G:\Мой диск\sites
+G:\Мой диск\Codex Drive
 ```
 
 Пример имени:
@@ -38,10 +38,10 @@ wordpress_site2-01-08-2026-153000-windows.zip
 ## Импорт на Windows
 
 1. Сначала клонируйте или обновите `https://github.com/renat1144/main2`.
-2. Запустите Google Drive Desktop и дождитесь синхронизации папки `sites`.
+2. Запустите Google Drive Desktop и дождитесь синхронизации папки `Codex Drive`.
 3. Дважды запустите `START_WORK.cmd` либо вручную выполните
    `script-local-import.cmd` без аргументов.
-4. Скрипт найдёт в `sites` самый новый архив `wordpress_site2-*.zip`, проверит
+4. Скрипт найдёт в `Codex Drive` самый новый архив `wordpress_site2-*.zip`, проверит
    его, скопирует в рабочую папку и запросит подтверждение словом `IMPORT`.
 
 Перед заменой данных автоматически создаётся резервный ZIP в папке `backups`.
@@ -62,7 +62,7 @@ FINISH_WORK.command
 bash ./script-local-export.sh
 ```
 
-Архив появится прямо в папке Google Drive `sites`. Дождитесь окончания
+Архив появится прямо в папке Google Drive `Codex Drive`. Дождитесь окончания
 синхронизации Google Drive.
 
 ## Импорт на Mac
@@ -79,7 +79,7 @@ START_WORK.command
 bash ./script-local-import.sh
 ```
 
-Скрипт автоматически возьмёт самый новый `wordpress_site2-*.zip` из `sites`,
+Скрипт автоматически возьмёт самый новый `wordpress_site2-*.zip` из `Codex Drive`,
 проверит контрольную сумму, скопирует ZIP в проект и запросит `IMPORT`.
 
 ## Если Google Drive не найден автоматически
@@ -87,15 +87,15 @@ bash ./script-local-import.sh
 Windows:
 
 ```powershell
-.\script-local-export.cmd -GoogleDriveSitesPath "G:\Мой диск\sites"
-.\script-local-import.cmd -GoogleDriveSitesPath "G:\Мой диск\sites"
+.\script-local-export.cmd -CodexDrivePath "G:\Мой диск\Codex Drive"
+.\script-local-import.cmd -CodexDrivePath "G:\Мой диск\Codex Drive"
 ```
 
 Mac:
 
 ```bash
-bash ./script-local-export.sh --google-drive-sites-path "/путь/к/Google Drive/sites"
-bash ./script-local-import.sh --google-drive-sites-path "/путь/к/Google Drive/sites"
+bash ./script-local-export.sh --codex-drive-path "/путь/к/Google Drive/Codex Drive"
+bash ./script-local-import.sh --codex-drive-path "/путь/к/Google Drive/Codex Drive"
 ```
 
 ## Важные правила

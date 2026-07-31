@@ -9,7 +9,7 @@ backups_path="$project_path/backups"
 project_folder_name="$(basename "$project_path")"
 output_directory=""
 archive_name=""
-google_drive_sites_path=""
+codex_drive_path=""
 using_google_drive=0
 update_handoff=0
 
@@ -25,9 +25,9 @@ while [[ $# -gt 0 ]]; do
             archive_name="$2"
             shift 2
             ;;
-        --google-drive-sites-path)
-            [[ $# -ge 2 && "$2" != --* ]] || { echo '--google-drive-sites-path requires a path.' >&2; exit 2; }
-            google_drive_sites_path="$2"
+        --codex-drive-path|--google-drive-sites-path)
+            [[ $# -ge 2 && "$2" != --* ]] || { echo '--codex-drive-path requires a path.' >&2; exit 2; }
+            codex_drive_path="$2"
             shift 2
             ;;
         --update-handoff)
@@ -61,30 +61,26 @@ json_escape() {
     printf '%s' "$value"
 }
 
-find_google_drive_sites_path() {
-    if [[ -n "$google_drive_sites_path" ]]; then
-        printf '%s' "$google_drive_sites_path"
-        return 0
-    fi
-    if [[ -n "${GOOGLE_DRIVE_SITES_PATH:-}" ]]; then
-        printf '%s' "$GOOGLE_DRIVE_SITES_PATH"
+find_codex_drive_path() {
+    if [[ -n "$codex_drive_path" ]]; then
+        printf '%s' "$codex_drive_path"
         return 0
     fi
     if [[ -n "${CODEX_DRIVE_PATH:-}" ]]; then
         printf '%s' "$CODEX_DRIVE_PATH"
         return 0
     fi
+    if [[ -n "${SITE_TRANSFER_DIR:-}" ]]; then
+        printf '%s' "$SITE_TRANSFER_DIR"
+        return 0
+    fi
+    if [[ -n "${GOOGLE_DRIVE_SITES_PATH:-}" ]]; then
+        printf '%s' "$GOOGLE_DRIVE_SITES_PATH"
+        return 0
+    fi
 
     local candidate
     for candidate in \
-        "$HOME"/Library/CloudStorage/*/sites \
-        "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/sites \
-        "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/sites \
-        "$HOME/Google Drive/sites" \
-        "$HOME/My Drive/sites" \
-        "$HOME/Мой диск/sites" \
-        "/Volumes/GoogleDrive/My Drive/sites" \
-        "/Volumes/GoogleDrive/Мой диск/sites" \
         "$HOME"/Library/CloudStorage/*/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/Codex\ Drive \
@@ -157,11 +153,11 @@ fi
 
 if [[ -z "$output_directory" ]]; then
     using_google_drive=1
-    sites_path="$(find_google_drive_sites_path)" || {
-        echo 'Google Drive transfer folder "sites" was not found. Start Google Drive Desktop or pass --google-drive-sites-path with its local path.' >&2
+    codex_drive_directory="$(find_codex_drive_path)" || {
+        echo 'Google Drive transfer folder "Codex Drive" was not found. Start Google Drive Desktop or pass --codex-drive-path with its local path.' >&2
         exit 1
     }
-    output_directory="$sites_path"
+    output_directory="$codex_drive_directory"
 fi
 mkdir -p "$output_directory" "$backups_path"
 output_directory="$(cd "$output_directory" && pwd)"

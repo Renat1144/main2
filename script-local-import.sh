@@ -8,7 +8,7 @@ uploads_path="$project_path/wp-content/uploads"
 backups_path="$project_path/backups"
 project_folder_name="$(basename "$project_path")"
 archive_path=""
-google_drive_sites_path=""
+codex_drive_path=""
 force=0
 skip_backup=0
 validate_only=0
@@ -18,9 +18,9 @@ while [[ $# -gt 0 ]]; do
         --force) force=1; shift ;;
         --skip-backup) skip_backup=1; shift ;;
         --validate-only) validate_only=1; shift ;;
-        --google-drive-sites-path)
-            [[ $# -ge 2 && "$2" != --* ]] || { echo '--google-drive-sites-path requires a path.' >&2; exit 2; }
-            google_drive_sites_path="$2"
+        --codex-drive-path|--google-drive-sites-path)
+            [[ $# -ge 2 && "$2" != --* ]] || { echo '--codex-drive-path requires a path.' >&2; exit 2; }
+            codex_drive_path="$2"
             shift 2
             ;;
         -*) echo "Unknown argument: $1" >&2; exit 2 ;;
@@ -52,30 +52,26 @@ read_manifest_string() {
     sed -n "s/.*\"${key}\"[[:space:]]*:[[:space:]]*\"\([^\"]*\)\".*/\1/p" "$temporary_path/manifest.json" | head -n 1
 }
 
-find_google_drive_sites_path() {
-    if [[ -n "$google_drive_sites_path" ]]; then
-        printf '%s' "$google_drive_sites_path"
-        return 0
-    fi
-    if [[ -n "${GOOGLE_DRIVE_SITES_PATH:-}" ]]; then
-        printf '%s' "$GOOGLE_DRIVE_SITES_PATH"
+find_codex_drive_path() {
+    if [[ -n "$codex_drive_path" ]]; then
+        printf '%s' "$codex_drive_path"
         return 0
     fi
     if [[ -n "${CODEX_DRIVE_PATH:-}" ]]; then
         printf '%s' "$CODEX_DRIVE_PATH"
         return 0
     fi
+    if [[ -n "${SITE_TRANSFER_DIR:-}" ]]; then
+        printf '%s' "$SITE_TRANSFER_DIR"
+        return 0
+    fi
+    if [[ -n "${GOOGLE_DRIVE_SITES_PATH:-}" ]]; then
+        printf '%s' "$GOOGLE_DRIVE_SITES_PATH"
+        return 0
+    fi
 
     local candidate
     for candidate in \
-        "$HOME"/Library/CloudStorage/*/sites \
-        "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/sites \
-        "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/sites \
-        "$HOME/Google Drive/sites" \
-        "$HOME/My Drive/sites" \
-        "$HOME/Мой диск/sites" \
-        "/Volumes/GoogleDrive/My Drive/sites" \
-        "/Volumes/GoogleDrive/Мой диск/sites" \
         "$HOME"/Library/CloudStorage/*/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/Codex\ Drive \
@@ -122,12 +118,12 @@ command -v shasum >/dev/null 2>&1 || {
 archive_from_google_drive=0
 if [[ -z "$archive_path" ]]; then
     archive_from_google_drive=1
-    sites_path="$(find_google_drive_sites_path)" || {
-        echo 'Google Drive transfer folder "sites" was not found. Start Google Drive Desktop or pass --google-drive-sites-path with its local path.' >&2
+    codex_drive_directory="$(find_codex_drive_path)" || {
+        echo 'Google Drive transfer folder "Codex Drive" was not found. Start Google Drive Desktop or pass --codex-drive-path with its local path.' >&2
         exit 1
     }
     cloud_archive_path=""
-    for candidate_archive in "$sites_path"/"$project_folder_name"-*.zip; do
+    for candidate_archive in "$codex_drive_directory"/"$project_folder_name"-*.zip; do
         [[ -f "$candidate_archive" ]] || continue
         [[ "$(basename "$candidate_archive")" != *-before-import-* ]] || continue
         if [[ -z "$cloud_archive_path" || "$candidate_archive" -nt "$cloud_archive_path" ]]; then
@@ -135,7 +131,7 @@ if [[ -z "$archive_path" ]]; then
         fi
     done
     [[ -n "$cloud_archive_path" ]] || {
-        echo "No $project_folder_name transfer ZIP was found in Google Drive: $sites_path" >&2
+        echo "No $project_folder_name transfer ZIP was found in Google Drive: $codex_drive_directory" >&2
         exit 1
     }
     incoming_path="$backups_path/incoming"
