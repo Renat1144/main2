@@ -8,7 +8,7 @@ echo 'Start WordPress work'
 echo '===================='
 echo
 
-/bin/bash "$script_dir/script-local-import.sh"
+/bin/bash "$script_dir/script-local-import.sh" --force
 exit_code=$?
 
 echo

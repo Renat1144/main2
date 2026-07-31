@@ -5,7 +5,7 @@ echo ========================================
 echo  Start WordPress work
 echo ========================================
 echo.
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0script-local-import.ps1"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0script-local-import.ps1" -Force
 set "exit_code=%ERRORLEVEL%"
 echo.
 if "%exit_code%"=="0" goto import_success
