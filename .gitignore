@@ -17,3 +17,7 @@ qa/
 credentials*
 secrets*
 wordpress-*.zip
+*-transfer-*.zip
+*-transfer-*.zip.sha256
+wordpress_site2-*.zip
+wordpress_site2-*.zip.sha256
