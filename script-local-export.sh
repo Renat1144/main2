@@ -81,9 +81,10 @@ find_codex_drive_path() {
 
     local candidate
     for candidate in \
-        "$HOME"/Library/CloudStorage/*/Codex\ Drive \
+        "$HOME"/Library/CloudStorage/GoogleDrive-*/*/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/Codex\ Drive \
+        "$HOME"/Library/CloudStorage/*/Codex\ Drive \
         "$HOME/Google Drive/Codex Drive" \
         "$HOME/My Drive/Codex Drive" \
         "$HOME/Мой диск/Codex Drive" \

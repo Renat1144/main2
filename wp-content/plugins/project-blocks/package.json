@@ -2,6 +2,7 @@
   "name": "project-blocks",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@11.19.0",
   "description": "Native Gutenberg blocks for the project homepage and master-class pages.",
   "scripts": {
     "build": "wp-scripts build",

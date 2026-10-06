@@ -72,9 +72,10 @@ find_codex_drive_path() {
 
     local candidate
     for candidate in \
-        "$HOME"/Library/CloudStorage/*/Codex\ Drive \
+        "$HOME"/Library/CloudStorage/GoogleDrive-*/*/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/My\ Drive/Codex\ Drive \
         "$HOME"/Library/CloudStorage/GoogleDrive-*/Мой\ диск/Codex\ Drive \
+        "$HOME"/Library/CloudStorage/*/Codex\ Drive \
         "$HOME/Google Drive/Codex Drive" \
         "$HOME/My Drive/Codex Drive" \
         "$HOME/Мой диск/Codex Drive" \
@@ -99,6 +100,29 @@ find_codex_drive_path() {
         printf '%s' "$configured_path"
         return 0
     fi
+    return 1
+}
+
+copy_from_cloud_drive() {
+    local source_path="$1"
+    local destination_path="$2"
+    local temporary_destination="${destination_path}.downloading"
+    local attempt
+
+    for attempt in 1 2 3; do
+        # Google Drive Desktop exposes online-only files as File Provider
+        # placeholders. A streamed read materializes them more reliably than
+        # macOS cp/fcopyfile, which can fail with "Operation timed out".
+        if dd if="$source_path" of="$temporary_destination" bs=1048576 status=none \
+            && mv -f "$temporary_destination" "$destination_path"; then
+            return 0
+        fi
+        sleep 3
+    done
+
+    rm -f -- "$temporary_destination"
+    echo "Google Drive could not download: $source_path" >&2
+    echo 'Check that Google Drive Desktop is online, then try again.' >&2
     return 1
 }
 
@@ -137,9 +161,9 @@ if [[ -z "$archive_path" ]]; then
     incoming_path="$backups_path/incoming"
     mkdir -p "$incoming_path"
     local_archive_path="$incoming_path/$(basename "$cloud_archive_path")"
-    cp -f "$cloud_archive_path" "$local_archive_path"
+    copy_from_cloud_drive "$cloud_archive_path" "$local_archive_path"
     if [[ -f "$cloud_archive_path.sha256" ]]; then
-        cp -f "$cloud_archive_path.sha256" "$local_archive_path.sha256"
+        copy_from_cloud_drive "$cloud_archive_path.sha256" "$local_archive_path.sha256"
     fi
     archive_path="$local_archive_path"
     echo "Latest Google Drive archive copied to the project: $archive_path"

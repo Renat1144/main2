@@ -10,7 +10,10 @@ License: GPL-2.0-or-later
 == Development ==
 
 Install dependencies:
-pnpm install
+pnpm install --frozen-lockfile
+
+JavaScript lint:
+pnpm run lint:js
 
 Production build:
 pnpm run build
