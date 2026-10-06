@@ -351,7 +351,7 @@ function project_blocks_homepage_blocks() {
 					'primaryLabel'   => sanitize_text_field( $value( 'hero_primary_label' ) ),
 					'primaryUrl'     => '#masterclasses',
 					'secondaryLabel' => sanitize_text_field( $value( 'hero_secondary_label' ) ),
-					'secondaryUrl'   => '#method',
+					'secondaryUrl'   => '#about',
 				),
 				$image( 'hero', 'photo2.png' )
 			)

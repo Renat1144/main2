@@ -99,7 +99,7 @@ function custom_site_theme_bootstrap_content() {
 	set_theme_mod( 'nav_menu_locations', $locations );
 
 	if ( 'My WordPress' === get_option( 'blogname' ) || 'WordPress' === get_option( 'blogname' ) ) {
-		update_option( 'blogname', 'Название проекта' );
+		update_option( 'blogname', custom_site_theme_mod( 'hero_title' ) );
 	}
 	if ( ! get_option( 'blogdescription' ) ) {
 		update_option( 'blogdescription', custom_site_theme_mod( 'brand_caption' ) );
@@ -108,4 +108,3 @@ function custom_site_theme_bootstrap_content() {
 	update_option( 'custom_site_theme_bootstrap_v1', 1 );
 }
 add_action( 'after_switch_theme', 'custom_site_theme_bootstrap_content' );
-
